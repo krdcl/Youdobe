@@ -1,0 +1,12 @@
+[submodule "Frameworks"]
+	path = Frameworks
+	url = git@github.com:skelet668/Youdobe-Dependencies.git
+[submodule "UIKitExtensions"]
+	path = UIKitExtensions
+	url = https://github.com/yuriisamoienko/UIKitExtensions
+[submodule "FoundationExtensions"]
+	path = FoundationExtensions
+	url = https://github.com/yuriisamoienko/AppleFoundationExtensions
+[submodule "SwiftUiExtension"]
+	path = SwiftUiExtension
+	url = git@github.com:yuriisamoienko/SwiftUiExtension.git
