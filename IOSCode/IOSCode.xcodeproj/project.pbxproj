@@ -26,13 +26,13 @@
 		5A32BECA281B084D0035DFA9 /* SwiftUiExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A32BEC9281B084D0035DFA9 /* SwiftUiExtension.framework */; };
 		5A32BF5C281B1D450035DFA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32BF5B281B1D450035DFA9 /* ContentView.swift */; };
 		5A4EAF3328266DA000BE3051 /* PlayerVLCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4EAF3228266DA000BE3051 /* PlayerVLCView.swift */; };
+		5A522E49282BED7500298808 /* MobileVLCKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A522E48282BED7500298808 /* MobileVLCKit.xcframework */; };
+		5A522E50282BEFBE00298808 /* UIKitExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A522E4F282BEFBE00298808 /* UIKitExtensions.framework */; };
+		5A522E56282BF08100298808 /* FoundationExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A522E55282BF08100298808 /* FoundationExtensions.framework */; };
 		5A7B6641281C67B50056B565 /* YoutubeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7B6640281C67B50056B565 /* YoutubeDownloader.swift */; };
 		5A7B6653281D74030056B565 /* Localization_en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A7B6652281D74030056B565 /* Localization_en.strings */; };
 		5A7B6655281D745B0056B565 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7B6654281D745B0056B565 /* Localization.swift */; };
 		5A85117A28281CED00F6B18A /* KSPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85117928281CED00F6B18A /* KSPlayerView.swift */; };
-		5A851314282A522500F6B18A /* UIKitExtensions.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4EAF3E28267B9100BE3051 /* UIKitExtensions.xcframework */; };
-		5A85131A282A522500F6B18A /* FoundationExtensions.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AC3E3AB28240FD0007FA4F9 /* FoundationExtensions.xcframework */; };
-		5A851327282A551C00F6B18A /* MobileVLCKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0583FA28264BD300A773AB /* MobileVLCKit.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +67,9 @@
 		5A32BF5B281B1D450035DFA9 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5A4EAF3228266DA000BE3051 /* PlayerVLCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVLCView.swift; sourceTree = "<group>"; };
 		5A4EAF352826719D00BE3051 /* CrashReporter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CrashReporter.xcframework; path = ../Carthage/Carthage/Build/CrashReporter.xcframework; sourceTree = "<group>"; };
-		5A4EAF3E28267B9100BE3051 /* UIKitExtensions.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UIKitExtensions.xcframework; path = ../Carthage/Carthage/Build/UIKitExtensions.xcframework; sourceTree = "<group>"; };
+		5A522E48282BED7500298808 /* MobileVLCKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MobileVLCKit.xcframework; path = ../Frameworks/MobileVLCKit.xcframework; sourceTree = "<group>"; };
+		5A522E4F282BEFBE00298808 /* UIKitExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIKitExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A522E55282BF08100298808 /* FoundationExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FoundationExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A666C9E282ABFED00AE7F1D /* YoutubeDL-iOS */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "YoutubeDL-iOS"; path = "../Packages/YoutubeDL-iOS"; sourceTree = "<group>"; };
 		5A666C9F282AC02500AE7F1D /* KSPlayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = KSPlayer; path = ../Packages/KSPlayer; sourceTree = "<group>"; };
 		5A7B6640281C67B50056B565 /* YoutubeDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeDownloader.swift; sourceTree = "<group>"; };
@@ -79,7 +81,6 @@
 		5A85130D282A50F200F6B18A /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../../../Carthage/Cartfile; sourceTree = "<group>"; };
 		5AC3E39A2823FF5F007FA4F9 /* CocoaAsyncSocket.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaAsyncSocket.xcframework; path = ../Carthage/Carthage/Build/CocoaAsyncSocket.xcframework; sourceTree = "<group>"; };
 		5AC3E39B2823FF5F007FA4F9 /* Bagel.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Bagel.xcframework; path = ../Carthage/Carthage/Build/Bagel.xcframework; sourceTree = "<group>"; };
-		5AC3E3AB28240FD0007FA4F9 /* FoundationExtensions.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FoundationExtensions.xcframework; path = ../Carthage/Carthage/Build/FoundationExtensions.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,18 +89,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A32BECA281B084D0035DFA9 /* SwiftUiExtension.framework in Frameworks */,
+				5A522E56282BF08100298808 /* FoundationExtensions.framework in Frameworks */,
 				5A074504282ACD8D00CB72A4 /* KSPlayer in Frameworks */,
 				5A32BEBD281B07E70035DFA9 /* CrossPlatformCode.framework in Frameworks */,
 				5A0744F2282AC54700CB72A4 /* avdevice.xcframework in Frameworks */,
+				5A522E49282BED7500298808 /* MobileVLCKit.xcframework in Frameworks */,
 				5A0744F8282AC54700CB72A4 /* avformat.xcframework in Frameworks */,
 				5A0744F0282AC54700CB72A4 /* avcodec.xcframework in Frameworks */,
 				5A074506282ACD9300CB72A4 /* YoutubeDL in Frameworks */,
-				5A851327282A551C00F6B18A /* MobileVLCKit.xcframework in Frameworks */,
 				5A0744FA282AC54800CB72A4 /* avutil.xcframework in Frameworks */,
-				5A85131A282A522500F6B18A /* FoundationExtensions.xcframework in Frameworks */,
 				5A074501282ACD6700CB72A4 /* libssl.xcframework in Frameworks */,
+				5A522E50282BEFBE00298808 /* UIKitExtensions.framework in Frameworks */,
 				5A0744EE282AC54700CB72A4 /* avfilter.xcframework in Frameworks */,
-				5A851314282A522500F6B18A /* UIKitExtensions.xcframework in Frameworks */,
 				5A0744F6282AC54700CB72A4 /* swscale.xcframework in Frameworks */,
 				5A0744F4282AC54700CB72A4 /* swresample.xcframework in Frameworks */,
 				5A0744FE282ACD1D00CB72A4 /* libcrypto.xcframework in Frameworks */,
@@ -258,6 +259,9 @@
 		5A7B665E281FC2DC0056B565 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A522E55282BF08100298808 /* FoundationExtensions.framework */,
+				5A522E4F282BEFBE00298808 /* UIKitExtensions.framework */,
+				5A522E48282BED7500298808 /* MobileVLCKit.xcframework */,
 				5A074500282ACD6700CB72A4 /* libssl.xcframework */,
 				5A0744FD282ACD1D00CB72A4 /* libcrypto.xcframework */,
 				5A0744E8282AC54700CB72A4 /* avcodec.xcframework */,
@@ -269,10 +273,8 @@
 				5A0744EB282AC54700CB72A4 /* swscale.xcframework */,
 				5A8512D72829537B00F6B18A /* YoutubeDL.xcframework */,
 				5A0739252826ED4900B52161 /* MobileVLCKit.framework */,
-				5A4EAF3E28267B9100BE3051 /* UIKitExtensions.xcframework */,
 				5A4EAF352826719D00BE3051 /* CrashReporter.xcframework */,
 				5A0583FA28264BD300A773AB /* MobileVLCKit.xcframework */,
-				5AC3E3AB28240FD0007FA4F9 /* FoundationExtensions.xcframework */,
 				5AC3E39B2823FF5F007FA4F9 /* Bagel.xcframework */,
 				5AC3E39A2823FF5F007FA4F9 /* CocoaAsyncSocket.xcframework */,
 			);

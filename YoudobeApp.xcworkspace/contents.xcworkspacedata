@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:Youdobe.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:IOSCode/IOSCode.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CrossPlatformCode/CrossPlatformCode.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftUiExtension/SwiftUiExtension.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:FoundationExtensions/FoundationExtensions.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UIKitExtensions/UIKitExtensions.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:WatchOsCode/WatchOsCode.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MacCode/MacCode.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Youdobe.xcodeproj">
+   </FileRef>
+</Workspace>

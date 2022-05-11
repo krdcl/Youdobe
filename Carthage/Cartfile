@@ -1,0 +1,15 @@
+
+
+#github "morizotter/TouchVisualizer" "4.0.0"
+
+#github "https://github.com/yagiz/Bagel" ~> 1.4.0
+
+#binary "https://code.videolan.org/videolan/VLCKit/raw/master/Packaging/MobileVLCKit.json" ~> 3.3.0
+
+######git "https://github.com/yuriisamoienko/UIKitExtensions" "main"
+
+###########git "https://github.com/yuriisamoienko/AppleFoundationExtensions" "main"
+
+####git "https://github.com/yuriisamoienko/YoutubeDL-IOS" "main"
+
+#####git "https://github.com/yuriisamoienko/KSPlayer" "CarthageSupport"
