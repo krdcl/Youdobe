@@ -1,0 +1,19 @@
+/* 
+  Localization.strings
+  IOSCode
+
+  Created by Yurii Samoienko on 30.04.2022.
+  
+*/
+
+"TranscodingStoppedMessage" = "Transcoding stopped. Switch to app and restart.";
+"NoSuitableFormat" = "No suitable format.";
+"DownloadStartFormat" = "Download start: %@";
+"NoTitle?" = "No title?";
+"TranscodeProgressFormat" = "Transcoding %@ ETA %@";
+"DownloadProgressFormat" = "%@ of %@ at %@/s ETA %@ %@";
+"ChooseFormat" = "Choose Format";
+"SomeFormatsNeedTranscoding" = "Some formats need transcoding after download.";
+"BestFormat" = "Video+Audio.mp4 (%ldp)";
+"RemuxingFormat" = "Video.%@ + Audio.%@ (%ldp)";
+"ExtractingInfo" = "Extracting info...";
