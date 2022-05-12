@@ -1,6 +1,6 @@
 [submodule "Frameworks"]
 	path = Frameworks
-	url = git@github.com:skelet668/Youdobe-Dependencies.git
+	url = https://github.com/skelet668/Youdobe-Dependencies.git
 [submodule "UIKitExtensions"]
 	path = UIKitExtensions
 	url = https://github.com/yuriisamoienko/UIKitExtensions
