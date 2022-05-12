@@ -37,7 +37,7 @@ let package = Package(
             name: "FFmpeg",
             dependencies: [
 //                "avcodec", "avfilter", "avformat", "avutil", "swresample", "swscale",
-//                "Libssl",
+                "libssl",
                 //"Libcrypto"
             ],
             linkerSettings: [
@@ -65,10 +65,10 @@ let package = Package(
 //        .binaryTarget(name: "swscale", path: "../../Frameworks/swscale.xcframework"),
 //        .binaryTarget(name: "swresample", path: "../../Frameworks/swresample.xcframework"),
         
-//        .binaryTarget(
-//            name: "Libssl",
-//            path: "../../Frameworks/Libssl.xcframework"
-//        ),
+        .binaryTarget(
+            name: "libssl",
+            path: "../../Frameworks/libssl.xcframework"
+        ),
 //        .binaryTarget(
 //            name: "Libcrypto",
 //            path: "../../Frameworks/Libcrypto.xcframework"
