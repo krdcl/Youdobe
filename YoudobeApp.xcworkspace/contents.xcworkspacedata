@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../../Volumes/SSD_R5/Development_R5/vlckit/VLCKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:VLCKitExtensions/VLCKitExtensions.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "container:Youdobe.xcodeproj">
    </FileRef>
    <FileRef

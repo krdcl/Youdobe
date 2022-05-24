@@ -55,11 +55,16 @@ public class YoutubeDownloader: YoutubeDownloaderPl {
     // MARK: YoutubeDownloaderPl
     
     public func testMe(_ completion: @escaping ([TestOutput]) -> Void) {
+        // test
+        return completion([TestOutput(video: URLRequest(url: URL(string: "https://rr2---sn-x8xgxnu05-8poe.googlevideo.com/videoplayback?expire=1653408483&ei=g66MYqqVKMbHyAXFz7_gAQ&ip=141.138.126.113&id=o-ADiga0HHeXrBi5j7yw8G0qdxWe5npwz5lJGcDEsgB9WM&itag=137&source=youtube&requiressl=yes&mh=gp&mm=31%2C29&mn=sn-x8xgxnu05-8poe%2Csn-3c27snee&ms=au%2Crdu&mv=m&mvi=2&pl=19&initcwndbps=720000&vprv=1&mime=video%2Fmp4&gir=yes&clen=60758568&dur=212.612&lmt=1630382391378426&mt=1653386459&fvip=2&keepalive=yes&fexp=24001373%2C24007246&c=ANDROID&txp=1432434&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRQIhAKJZNmCEuG5wqe5VzfoPbYBLIAxYPLRKIPwHp8STZrEhAiA8an3R9yAJZAZQ948aRD3m5O74xYkFRUtqrh-47cA7KQ%3D%3D&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRQIhAIbDXArMYzzwPxwGvN3V4Xe0oupaNqW-Blp_WZqk0SGNAiBOe3A0Q4RgyA__j1qHcVOBpZg5a5nsFhWU7-vqYZhxzg%3D%3D")!), audio: URLRequest(url: URL(string: "https://rr2---sn-x8xgxnu05-8poe.googlevideo.com/videoplayback?expire=1653408483&ei=g66MYqqVKMbHyAXFz7_gAQ&ip=141.138.126.113&id=o-ADiga0HHeXrBi5j7yw8G0qdxWe5npwz5lJGcDEsgB9WM&itag=140&source=youtube&requiressl=yes&mh=gp&mm=31%2C29&mn=sn-x8xgxnu05-8poe%2Csn-3c27snee&ms=au%2Crdu&mv=m&mvi=2&pl=19&initcwndbps=720000&vprv=1&mime=audio%2Fmp4&gir=yes&clen=3442597&dur=212.671&lmt=1630381621430730&mt=1653386459&fvip=2&keepalive=yes&fexp=24001373%2C24007246&c=ANDROID&txp=1432434&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRQIgA52maHdXvo1NZ2V-s-sx3UD34T16oDHZAY_K5XXDKNECIQDA45Syd8ttqbiCWvZTQUXuRpkFMbstoC381J4jv1WHgg%3D%3D&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRQIhAIbDXArMYzzwPxwGvN3V4Xe0oupaNqW-Blp_WZqk0SGNAiBOe3A0Q4RgyA__j1qHcVOBpZg5a5nsFhWU7-vqYZhxzg%3D%3D")!), duration: 0)])
+        
+        
         guard let url = URL(string:
 //                                "https://www.youtube.com/watch?v=mPQqIogek6s" // short 23 sec
 //                            "https://www.youtube.com/watch?v=BD_pjm7xvgg" // movie 4k
 //                            "https://www.youtube.com/watch?v=LXb3EKWsInQ" // 4k
                             "https://www.youtube.com/watch?v=hXQxSi34GWY" // guitar play
+//                            "https://www.youtube.com/watch?v=b0LkG52V-lI" // guitar cover 'Beggin'
         ) else {
             fatalError()
         }
@@ -68,6 +73,9 @@ public class YoutubeDownloader: YoutubeDownloaderPl {
             case .success(let info):
                 let info: Info = info
                 do {
+                    for (index, format) in info.formats.enumerated() {
+                        print("\(index) format: \(format.description), url: \(format.urlRequest?.url?.absoluteString ?? "")\n") // 18 or 24
+                    }
                     let videoFormats = info.formats.filter {
                         ($0.ext == "mp4" && $0.vcodec?.contains("avc1") == true ) // video track
                     }
@@ -83,8 +91,8 @@ public class YoutubeDownloader: YoutubeDownloaderPl {
                     }
                     
 //                    var chunksCount: Int64 = 1
-                    if let videoFormat: Format = videoFormats.element(at: 7), //8 20 // (1080p) mp4 avc1 has sound
-                       let audioFormat: Format = audioFormats.element(at: 4), //3
+                    if let videoFormat: Format = videoFormats.element(at: 7), // // (1080p) mp4 avc1 has sound
+                       let audioFormat: Format = audioFormats.element(at: 3), //3
 //                       let videoUrl = videoFormat.urlRequest,   // audio 3..7
 //                       let audioUrl = audioFormat.urlRequest
                         

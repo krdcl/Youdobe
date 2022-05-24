@@ -50,8 +50,10 @@
 		5A32BF49281B13260035DFA9 /* MacCode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A32BF44281B13260035DFA9 /* MacCode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5A32BF4A281B13260035DFA9 /* SwiftUiExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A32BF45281B13260035DFA9 /* SwiftUiExtension.framework */; };
 		5A32BF4B281B13260035DFA9 /* SwiftUiExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A32BF45281B13260035DFA9 /* SwiftUiExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5A522E4D282BED8B00298808 /* MobileVLCKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A522E4C282BED8B00298808 /* MobileVLCKit.xcframework */; };
-		5A522E4E282BED8B00298808 /* MobileVLCKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A522E4C282BED8B00298808 /* MobileVLCKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5A45678E2832A2EE00FAFC26 /* VLCKitExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45678D2832A2EE00FAFC26 /* VLCKitExtensions.framework */; };
+		5A45678F2832A2EE00FAFC26 /* VLCKitExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45678D2832A2EE00FAFC26 /* VLCKitExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5A4567962832BD6300FAFC26 /* MobileVLCKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A522E4C282BED8B00298808 /* MobileVLCKit.xcframework */; };
+		5A4567972832BD6300FAFC26 /* MobileVLCKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A522E4C282BED8B00298808 /* MobileVLCKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5A522E59282BF09000298808 /* FoundationExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A522E58282BF09000298808 /* FoundationExtensions.framework */; };
 		5A522E5A282BF09000298808 /* FoundationExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A522E58282BF09000298808 /* FoundationExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5A522E5C282BF09700298808 /* UIKitExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A522E5B282BF09700298808 /* UIKitExtensions.framework */; };
@@ -99,9 +101,10 @@
 			dstSubfolderSpec = 10;
 			files = (
 				5A07451B282ACF5400CB72A4 /* swscale.xcframework in Embed Frameworks */,
-				5A522E4E282BED8B00298808 /* MobileVLCKit.xcframework in Embed Frameworks */,
 				5A074511282ACF5400CB72A4 /* avfilter.xcframework in Embed Frameworks */,
 				5A32BF42281B12F10035DFA9 /* IOSCode.framework in Embed Frameworks */,
+				5A45678F2832A2EE00FAFC26 /* VLCKitExtensions.framework in Embed Frameworks */,
+				5A4567972832BD6300FAFC26 /* MobileVLCKit.xcframework in Embed Frameworks */,
 				5A074519282ACF5400CB72A4 /* avformat.xcframework in Embed Frameworks */,
 				5A074513282ACF5400CB72A4 /* libcrypto.xcframework in Embed Frameworks */,
 				5A07451D282ACF5400CB72A4 /* avdevice.xcframework in Embed Frameworks */,
@@ -171,6 +174,7 @@
 		5A32BF43281B13260035DFA9 /* CrossPlatformCode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CrossPlatformCode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A32BF44281B13260035DFA9 /* MacCode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MacCode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A32BF45281B13260035DFA9 /* SwiftUiExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftUiExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A45678D2832A2EE00FAFC26 /* VLCKitExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VLCKitExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A522E4C282BED8B00298808 /* MobileVLCKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MobileVLCKit.xcframework; path = Frameworks/MobileVLCKit.xcframework; sourceTree = "<group>"; };
 		5A522E58282BF09000298808 /* FoundationExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FoundationExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A522E5B282BF09700298808 /* UIKitExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIKitExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,9 +186,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A07451A282ACF5400CB72A4 /* swscale.xcframework in Frameworks */,
-				5A522E4D282BED8B00298808 /* MobileVLCKit.xcframework in Frameworks */,
 				5A32BF41281B12F10035DFA9 /* IOSCode.framework in Frameworks */,
 				5A074510282ACF5400CB72A4 /* avfilter.xcframework in Frameworks */,
+				5A45678E2832A2EE00FAFC26 /* VLCKitExtensions.framework in Frameworks */,
+				5A4567962832BD6300FAFC26 /* MobileVLCKit.xcframework in Frameworks */,
 				5A32BE68281B06C10035DFA9 /* SwiftUiExtension.framework in Frameworks */,
 				5A074518282ACF5400CB72A4 /* avformat.xcframework in Frameworks */,
 				5A32BE6C281B06C70035DFA9 /* CrossPlatformCode.framework in Frameworks */,
@@ -432,6 +437,7 @@
 		5AC3E3A12823FF7D007FA4F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A45678D2832A2EE00FAFC26 /* VLCKitExtensions.framework */,
 				5A522E5B282BF09700298808 /* UIKitExtensions.framework */,
 				5A522E58282BF09000298808 /* FoundationExtensions.framework */,
 				5A522E4C282BED8B00298808 /* MobileVLCKit.xcframework */,

@@ -25,7 +25,10 @@ let package = Package(
 //        .binaryTarget(name: "avdevice", path: "../../Frameworks/avdevice.xcframework"),
 //        .binaryTarget(name: "swscale", path: "../../Frameworks/swscale.xcframework"),
 //        .binaryTarget(name: "swresample", path: "../../Frameworks/swresample.xcframework"),
-        
+//        .binaryTarget(
+//            name: "libssl",
+//            path: "../../Frameworks/libssl.xcframework"
+//        ),
         .target(name: "Tool", dependencies: [
             .product(name: "ArgumentParser", package: "swift-argument-parser"),
         ]),
@@ -36,5 +39,10 @@ let package = Package(
                     .linkedLibrary("iconv"),
                 ]
         ),
+//        .target(name: "FFmpeg-iOS",
+//                dependencies: [
+//                    "libssl"
+//                ]
+//        ),
     ]
 )

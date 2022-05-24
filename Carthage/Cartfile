@@ -4,7 +4,9 @@
 
 #github "https://github.com/yagiz/Bagel" ~> 1.4.0
 
-#binary "https://code.videolan.org/videolan/VLCKit/raw/master/Packaging/MobileVLCKit.json" ~> 3.3.0
+binary "https://code.videolan.org/videolan/VLCKit/raw/master/Packaging/MobileVLCKit.json" ~> 3.4.0
+
+#pod 'MobileVLCKit', '3.4.1b8'
 
 ######git "https://github.com/yuriisamoienko/UIKitExtensions" "main"
 

@@ -21,15 +21,19 @@ public struct ContentView: View {
         let urlSession = URLSession(configuration: configuration)
         return urlSession
     }()
+//    private var audioPlayer: AVAudioPlayer?
     
     // MARK: Public Properties
     
+//    mutating private func set(audioUrl: URL) {
+//        self.audioPlayer = try? AVAudioPlayer(contentsOf: audioUrl)
+//    }
+    
     public var body: some View {
         ZStack {
-            if true {
-                let avPlayer = AVPlayer()
-                
-                VideoPlayer(player: avPlayer)
+            if false {
+                let player = PlayerKSView()
+                player
                     .onAppear {
                         youtubeDLWrapperPl.testMe { requestsAudioVideo in
                             guard let requests = requestsAudioVideo.first,
@@ -41,17 +45,139 @@ public struct ContentView: View {
                             print("video url: \(videoUrl.absoluteString)")
                             print("audio url: \(audioUrl.absoluteString)")
                             
-                            let videoPlayerItem = AVPlayerItem(url: videoUrl)
-                            videoPlayerItem.preferredForwardBufferDuration = 1
+                            player.set(videoUrl: videoUrl)
+                            player.set(audioUrl: audioUrl)
+                            player.play()
+                        }
+                    }
+//                    .onTapGesture {
+//                        if player.isPlaying == true {
+//                            player.pause()
+//                        } else {
+//                            player.play()
+//                        }
+//                    }
+            }
+            else if false {
+                let avPlayer = AVPlayer()
+                let audioPlayer = AVPlayer()
+//                var audioPlayer = AVAudioPlayer(contentsOfURL: url)
+//                var audioPlayerObj: AVAudioPlayer?
+                // This will represent a common clock using the host time
+                let audioClock = CMClockGetHostTimeClock()
+                
+                
+                VideoPlayer(player: avPlayer)
+                    .onAppear { //[self] in
+                        try? AVAudioSession.sharedInstance().setCategory(.playback)
+                        
+                        youtubeDLWrapperPl.testMe { requestsAudioVideo in
+                            guard let requests = requestsAudioVideo.first,
+                                  let videoUrl = requests.video.url,
+                                  let audioUrl = requests.audio.url
+                            else {
+                                return
+                            }
+                            print("video url: \(videoUrl.absoluteString)")
+                            print("audio url: \(audioUrl.absoluteString)")
+                            
+                            if true {
+                            let videoPlayerItem = //YPlayerItem(videoUrl: videoUrl, audioUrl: audioUrl) //
+//                                        AVPlayerItem(url: videoUrl)
+//                                    AVPlayerItem(url: audioUrl)
+//                                    AVPlayerItem(asset: AVAsset(url: audioUrl))
+//                                      AVPlayerItem(asset: AVURLAsset(url: audioUrl))
+                                          AVPlayerItem(asset: YAsset(videoUrl: videoUrl, audioUrl: audioUrl))
+//                                        AVPlayerItem(url: audioUrl)
+//                            videoPlayerItem.preferredForwardBufferDuration = 1
+                            
                             
                             avPlayer.replaceCurrentItem(with: videoPlayerItem)
+                            } else {
+                                let videoAsset = AVURLAsset(url: videoUrl)
+                                let videoAssetTracks = videoAsset.tracks(withMediaType:.video)
+                                let videoAssetAllTracks = videoAsset.tracks
+                                guard let videoAssetTrack = videoAssetTracks.first
+                                else {
+                                    fatalError("videoAssetTracks.count: \(videoAssetTracks.count)")
+                                    return
+                                }
+                                
+                                let duration: CMTime = videoAsset.duration
+                                print("duration", CMTimeGetSeconds(duration)) // 46.17946666666667
+                                let composition = AVMutableComposition()
+                                let videoTrack = composition.addMutableTrack(
+                                    withMediaType: AVMediaType.video,
+                                    preferredTrackID:kCMPersistentTrackID_Invalid
+                                )
+                                try? videoTrack?.insertTimeRange(CMTimeRange(start:CMTime.zero, duration: duration), of: videoAssetTrack, at: CMTime.zero)
+                                
+                                if true {
+                                    let audioAsset = AVURLAsset(url: audioUrl)
+                                    let audioAssetTracks = audioAsset.tracks(withMediaType:.audio)
+                                    
+                                    guard let audioAssetTrack = audioAssetTracks.first
+                                    else {
+                                        fatalError("audioAssetTrack.count: \(audioAssetTracks.count)")
+                                        return
+                                    }
+                                    let audioTrack = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)
+                                    try? audioTrack?.insertTimeRange(CMTimeRange(start:CMTime.zero, duration: duration), of: audioAssetTrack, at: CMTime.zero)
+                                }
+                                
+                                let playerItem = AVPlayerItem(asset: composition)
+                                
+                                avPlayer.replaceCurrentItem(with: playerItem)
+                            }
+                            
+//                            self.set(audioUrl: audioUrl)
+                            
+//                            audioPlayer.replaceCurrentItem(with: AVPlayerItem(url: audioUrl))
+                            
+                            
+//                            func audioPlay(at time: TimeInterval = 0, hostTime: UInt64 = 0) {
+//                                audioPlayer.play(when: time, hostTime: hostTime)
+//                            }
+//
+//                            func schedulePlayback(videoTime: TimeInterval, audioTime: TimeInterval, hostTime: UInt64 ) {
+//                                audioPlay( audioTime, hostTime: hostTime )
+//                                videoPlay(at: 0, hostTime: hostTime)
+//                            }
+//
+//                            func videoPlay(at time: TimeInterval = 0, hostTime: UInt64 = 0 ) {
+//                                let cmHostTime = CMClockMakeHostTimeFromSystemUnits(hostTime)
+//                                let cmVTime = CMTimeMakeWithSeconds(time, 1000000)
+//                                let futureTime = CMTimeAdd(cmHostTime, cmVTime)
+//                                videoPlayer.setRate(1, time: kCMTimeInvalid, atHostTime: futureTime)
+//                            }
+                            
+                            
+                            for player in [avPlayer
+                                           , audioPlayer
+                            ] {
+                                player.masterClock = audioClock
+//                                player.automaticallyWaitsToMinimizeStalling = false
+                            }
                             avPlayer.play()
+//                            audioPlayer.play()
+//                            self.audioPlayer?.play()
+                        }
+                    }
+                    .onTapGesture {
+                        if avPlayer.timeControlStatus == .playing {
+                            avPlayer.pause()
+                            audioPlayer.pause()
+                        } else {
+                            avPlayer.play()
+                            audioPlayer.play()
                         }
                     }
             }
-        else if false {
+        else if true {
             let player = PlayerVLCView()
-            player.onAppear {
+            
+            player
+                .onAppear {
                     youtubeDLWrapperPl.testMe { requestsAudioVideo in
                         guard let requests = requestsAudioVideo.first
                         else {
@@ -71,13 +197,38 @@ public struct ContentView: View {
                         player.play()
                     }
                 }
-            .onTapGesture {
-                if player.isPlaying == true {
-                    player.pause()
-                } else {
-                    player.play()
+//                .onTapGesture {
+//                    
+//                }
+//                .onTapGesture(count: 2) {
+//                    player.forward(seconds: 30)
+//                }
+                .onTapGesture {
+                    if player.isPlaying == true {
+                        player.pause()
+                    } else {
+                        player.play()
+                    }
                 }
-            }
+                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                                    .onEnded({ value in
+                                        if value.translation.width < 0 {
+                                            // left
+                                            player.forward(seconds: -30)
+                                        }
+
+                                        if value.translation.width > 0 {
+                                            // right
+                                            player.forward(seconds: 30)
+                                        }
+                                        if value.translation.height < 0 {
+                                            // up
+                                        }
+
+                                        if value.translation.height > 0 {
+                                            // down
+                                        }
+                                    }))
         } else {
 //        let vlcPlayer = VLCMediaPlayer
         
@@ -100,7 +251,7 @@ public struct ContentView: View {
             
                 youtubeDLWrapperPl.testMe { requestsAudioVideo in
                     print("youtubeDLWrapperPl.testMe)")
-                    if false {
+                    /*if false {
                         let urlSession = self.urlSession
                                              
 //                        DispatchQueue.background.async {
@@ -215,7 +366,7 @@ public struct ContentView: View {
                         }
                         
                         return
-                    }
+                    }*/
                     
                     let data = requestsAudioVideo[0]
                     
@@ -289,6 +440,9 @@ public struct ContentView: View {
             }
     }
         }
+        .onAppear {
+            UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
+        }
     }
     
     // MARK: Public Functions
@@ -357,3 +511,123 @@ public extension URLSession {
     }
     
 }
+
+fileprivate class YPlayerItem: AVPlayerItem {
+    
+    private var audioItem: AVPlayerItem?
+    
+    public convenience init(videoUrl: URL, audioUrl: URL) {
+        self.init(url: videoUrl)
+        audioItem = AVPlayerItem(url: audioUrl)
+    }
+    
+    override var tracks: [AVPlayerItemTrack] {
+        get {
+            let videoTracks = super.tracks.filter { $0.assetTrack?.mediaType == .video}
+            let audioTracks: [AVPlayerItemTrack] = audioItem?.tracks.filter { $0.assetTrack?.mediaType == .audio} ?? []
+            return videoTracks + audioTracks
+        }
+    }
+}
+
+open class YAsset: AVURLAsset {
+    
+//    private var audioAsset: AVAsset?
+//    private var awefewfwe: Int?
+    
+    public convenience init(videoUrl: URL, audioUrl: URL) {
+        self.init(url: videoUrl)
+//        awefewfwe = 23
+        let audioAsset = AVURLAsset(url: audioUrl)
+//        self.audioAsset = test
+//        audioAsset = AVAsset(url: audioUrl)
+        
+        referencesMapAVAssettoYAsset.setObject(audioAsset, forKey: self)
+        _ = 0
+    }
+    
+    //called
+    override open var tracks: [AVAssetTrack] {
+        return []
+        let videoTracks = super.tracks.filter { $0.mediaType == .video}
+        let audioAsset = referencesMapAVAssettoYAsset.object(forKey: self)
+        let audioTracks: [AVAssetTrack] = audioAsset?.tracks.filter { $0.mediaType == .audio} ?? []
+        
+//        return audioTracks // test
+        
+        return videoTracks + audioTracks
+    }
+    //not called
+    override open var trackGroups: [AVAssetTrackGroup] {
+     return []
+    }
+    
+    // called
+    override open var availableMediaCharacteristicsWithMediaSelectionOptions: [AVMediaCharacteristic] {
+        []
+    }
+    
+    // not called
+    override open var allMediaSelections: [AVMediaSelection] {
+        []
+    }
+    
+    // called
+    override open func track(withTrackID trackID: CMPersistentTrackID) -> AVAssetTrack? {
+        return nil
+        let audioAsset = referencesMapAVAssettoYAsset.object(forKey: self)
+        return audioAsset?.track(withTrackID: trackID) ?? super.track(withTrackID: trackID)
+    }
+    //called
+    override open func tracks(withMediaType mediaType: AVMediaType) -> [AVAssetTrack] {
+        return []
+        print("mediaType: \(mediaType.rawValue)")
+        let audioAsset = referencesMapAVAssettoYAsset.object(forKey: self)
+        let audioTracks = audioAsset?.tracks(withMediaType: mediaType) ?? []
+        let videoTracks = super.tracks(withMediaType: mediaType)
+        
+//        return audioTracks // test
+        
+//        if audioTracks.isNotEmpty {
+//            return audioTracks
+//        }
+        return videoTracks
+    }
+    //called
+    override open func mediaSelectionGroup(forMediaCharacteristic mediaCharacteristic: AVMediaCharacteristic) -> AVMediaSelectionGroup? {
+        return nil
+    }
+    
+    // not called
+    override open func compatibleTrack(for compositionTrack: AVCompositionTrack) -> AVAssetTrack? {
+        return nil
+    }
+    
+    override open func tracks(withMediaCharacteristic mediaCharacteristic: AVMediaCharacteristic) -> [AVAssetTrack] {
+        let audioAsset = referencesMapAVAssettoYAsset.object(forKey: self)
+        return audioAsset?.tracks(withMediaCharacteristic: mediaCharacteristic) ?? super.tracks(withMediaCharacteristic: mediaCharacteristic)
+    }
+    
+    // not called
+    @available(iOS 15.0, *)
+    override open func loadTrack(withTrackID trackID: CMPersistentTrackID, completionHandler: @escaping (AVAssetTrack?, Error?) -> Void) {
+        let audioAsset = referencesMapAVAssettoYAsset.object(forKey: self)
+        return audioAsset?.loadTrack(withTrackID: trackID, completionHandler: completionHandler) ?? super.loadTrack(withTrackID: trackID, completionHandler: completionHandler)
+    }
+    
+    // not called
+    @available(iOS 15.0, *)
+    override open func loadTracks(withMediaType mediaType: AVMediaType, completionHandler: @escaping ([AVAssetTrack]?, Error?) -> Void) {
+        let audioAsset = referencesMapAVAssettoYAsset.object(forKey: self)
+        return audioAsset?.loadTracks(withMediaType: mediaType, completionHandler: completionHandler) ?? super.loadTracks(withMediaType: mediaType, completionHandler: completionHandler)
+    }
+    
+    // not called
+    @available(iOS 15.0, *)
+    override open func loadTracks(withMediaCharacteristic mediaCharacteristic: AVMediaCharacteristic, completionHandler: @escaping ([AVAssetTrack]?, Error?) -> Void) {
+        let audioAsset = referencesMapAVAssettoYAsset.object(forKey: self)
+        return audioAsset?.loadTracks(withMediaCharacteristic: mediaCharacteristic, completionHandler: completionHandler) ?? super.loadTracks(withMediaCharacteristic: mediaCharacteristic, completionHandler: completionHandler)
+    }
+}
+
+fileprivate let referencesMapAVAssettoYAsset = NSMapTable<NSObject, AVURLAsset>(keyOptions: .weakMemory, valueOptions: .strongMemory)

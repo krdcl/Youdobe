@@ -36,7 +36,7 @@ let package = Package(
         .target(
             name: "FFmpeg",
             dependencies: [
-//                "avcodec", "avfilter", "avformat", "avutil", "swresample", "swscale",
+                "avcodec", "avfilter", "avformat", "avutil", "swresample", "swscale",
                 "libssl",
                 //"Libcrypto"
             ],
@@ -57,13 +57,13 @@ let package = Package(
             resources: [.process("Resources")]
         ),
         
-//        .binaryTarget(name: "avcodec", path: "../../Frameworks/avcodec.xcframework"),
-//        .binaryTarget(name: "avutil", path: "../../Frameworks/avutil.xcframework"),
-//        .binaryTarget(name: "avformat", path: "../../Frameworks/avformat.xcframework"),
-//        .binaryTarget(name: "avfilter", path: "../../Frameworks/avfilter.xcframework"),
-//        .binaryTarget(name: "avdevice", path: "../../Frameworks/avdevice.xcframework"),
-//        .binaryTarget(name: "swscale", path: "../../Frameworks/swscale.xcframework"),
-//        .binaryTarget(name: "swresample", path: "../../Frameworks/swresample.xcframework"),
+        .binaryTarget(name: "avcodec", path: "../../Frameworks/avcodec.xcframework"),
+        .binaryTarget(name: "avutil", path: "../../Frameworks/avutil.xcframework"),
+        .binaryTarget(name: "avformat", path: "../../Frameworks/avformat.xcframework"),
+        .binaryTarget(name: "avfilter", path: "../../Frameworks/avfilter.xcframework"),
+        .binaryTarget(name: "avdevice", path: "../../Frameworks/avdevice.xcframework"),
+        .binaryTarget(name: "swscale", path: "../../Frameworks/swscale.xcframework"),
+        .binaryTarget(name: "swresample", path: "../../Frameworks/swresample.xcframework"),
         
         .binaryTarget(
             name: "libssl",
